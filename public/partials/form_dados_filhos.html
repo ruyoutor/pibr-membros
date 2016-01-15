@@ -1,0 +1,60 @@
+					<!-- FILHOS -->
+					<div class="row">
+
+            <div class="col-md-12">
+                            
+              <fieldset id="" class="stepy-step" title="Step 1">
+                <legend>Filhos</legend>
+                            
+                <div>
+
+                  <table class="table table-bordered table-striped table-hover table-condensed" ng-show="filhos.length > 0">
+                    <tr style="font-weight: normal">
+                      <td style="width:60%; text-align: center">Nome</td>
+                      <td style="width:25%; text-align: center">Dt. nascimento</td>
+                      <td style="width:15%; text-align: center"> - </td>
+                    </tr>
+                    <tr ng-repeat="filho in filhos | filter:filtraFilhos">
+                      <td>
+                        <!-- editable username (text with validation) -->
+                        <span editable-text="filho.nome" id="nome" e-name="nome" e-style="width: 300px" e-required e-form="tableFilhos" onbeforesave="checkName($data, filho.id)" e-required>
+                          {{ filho.nome || '' }}
+                        </span>
+                      </td>
+                      <td>
+                        <span editable-date="filho.nascimento" e-name="nascimento" e-form="tableFilhos" e-required>
+                            {{ (filho.nascimento | date:"dd/MM/yyyy") || '' }}
+                        </span>
+                      </td>
+
+                      <td style="white-space: nowrap">
+                        <!-- form -->
+                        <form editable-form name="tableFilhos" onbeforesave="salvaFilho($data, filho.id)" ng-show="tableFilhos.$visible" class="form-buttons form-inline" shown="inserted == filho">
+                          <button type="submit" ng-disabled="tableFilhos.$waiting" class="btn btn-primary">
+                            <i class="glyphicon glyphicon-save"></i>
+                          </button>
+                          <button type="button" ng-disabled="tableFilhos.$waiting" ng-click="cancel($index)" class="btn btn-default">
+                            <i class="glyphicon glyphicon-remove"></i>
+                          </button>
+                        </form>
+                        <div class="buttons" ng-show="!tableFilhos.$visible">
+                          <button class="btn btn-primary" ng-click="tableFilhos.$show()">
+                            <i class="glyphicon glyphicon-edit"></i>
+                          </button>
+                          <button class="btn btn-danger" ng-click="removeFilho($index)">
+                            <i class="glyphicon glyphicon-floppy-remove"></i>
+                          </button>
+                        </div>  
+                      </td>                        
+                    </tr>
+                    
+                  </table>
+                  <button class="btn btn-default" ng-click="novoFilho()">
+                    <i class="glyphicon glyphicon-plus"></i> Novo
+                  </button>
+                </div>
+              </fieldset>                                
+            </div>
+					</div>
+					<!-- // FILHOS -->
+					    

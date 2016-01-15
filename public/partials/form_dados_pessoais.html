@@ -1,0 +1,165 @@
+			    <!-- DADOS PESSOAIS -->
+			    
+		     	<!-- <fieldset id="" class="stepy-step" title="Step 2"> -->
+        			<legend>Dados Pessoais</legend>
+
+
+					<div class="row">
+
+						<div class="col-md-6">
+							
+							<div class="form-group form-group-sm">
+								 
+								<label for="nome">
+									Nome
+								</label>
+								<input type="text" class="form-control" id="nome" ng-model="pessoa.nome"/>
+							</div>					
+						</div>
+						
+						<div class="col-md-6">
+							<div class="form-group form-group-sm">
+								<label for="email">
+									Email
+								</label>
+								<input type="email" class="form-control" id="email" ng-model="pessoa.email"/>
+							</div>
+						</div>						
+						
+					</div>
+			
+					<!--<div class="row">-->
+					<!--	<div class="col-md-12">-->
+					<!--		<div class="form-group form-group-sm">-->
+					<!--			<label for="email">-->
+					<!--				Email-->
+					<!--			</label>-->
+					<!--			<input type="email" class="form-control" id="email" ng-model="pessoa.email"/>-->
+					<!--		</div>-->
+					<!--	</div>-->
+					<!--</div>-->
+					
+					<div class="row">
+						
+					    <div class="col-md-3">
+							<div class="form-group form-group-sm">					 
+								<label for="nascimento">
+									Nascimento
+								</label>
+              					<input type="date" class="form-control" uib-datepicker-popup ng-model="dt" is-open="popup2.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+								</span>
+								<!--<input type="date" class="form-control" id="nascimento" ng-model="pessoa.nascimento">-->
+							</div>						
+						</div>						
+						
+						<div class="col-md-3 ">
+							<div class="form-group form-group-sm">					 
+								<label for="cpf">
+									CPF
+								</label>
+								<input type="text" class="form-control" id="cpf" ng-model="pessoa.cpf"/>
+							</div>
+						</div>
+						
+						<div class="col-md-3 ">
+							<div class="form-group form-group-sm">					 
+								<label for="rg">
+									Identidade
+								</label>
+								<input type="text" class="form-control" id="rg" ng-model="pessoa.rg">
+							</div>
+						</div>
+
+						<div class="col-md-3 ">
+							<div class="form-group form-group-sm">					 
+								<label for="orgaoExpedidor">
+									Orgão Expedidor
+								</label>
+								<input type="text" class="form-control" id="orgaoExpedidor" ng-model="pessoa.orgaoExpedidor">
+							</div>
+						</div>
+						
+					</div>
+					
+					<div class="row">
+					
+						<div class="col-md-3">
+							<div class="form-group form-group-sm">
+								<label for="sexo">
+									Sexo
+								</label>
+								<select id="sexo" name="sexo" class="form-control" ng-model="pessoa.sexo">
+									<option ng-repeat="s in sexos" value="{{s.id}}">{{s.descricao}}</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="form-group form-group-sm">					 
+								<label for="estadoCivil">
+									Estado Civil
+								</label>
+								<select id="estadoCivil" name="estadoCivil" ng-change="changeEstadoCivil()" class="form-control" ng-model="pessoa.estadoCivil">
+									<option ng-repeat="c in estadosCivil" value="{{c.id}}">{{c.descricao}}</option>
+								</select>
+							</div>
+						</div>
+						
+					    <div class="col-md-6">						
+							<div class="form-group form-group-sm">					 
+								<label for="naturalidade">
+									Naturalidade
+								</label>
+								<select id="naturalidade" name="naturalidade" class="form-control" ng-model="pessoa.naturalidade">
+									<option ng-repeat="uf in ufs" value="{{uf.uf}}">{{uf.estado | uppercase}}</option>
+								</select>
+							</div>						
+						</div>								
+						
+					</div>
+					
+					<div ng-show="pessoa.estadoCivil == 2">
+						<legend>Cônjuge</legend>
+						
+						<div class="row">
+						    
+							<div class="col-md-6">			
+								<div class="form-group form-group-sm">
+									 
+									<label for="nome">
+										Nome do Cônjuge
+									</label>
+									<input type="text" class="form-control" id="nome" ng-model="pesso.conjuge.nome">
+								</div>					
+							</div>
+							
+							<div class="col-md-3">
+								<div class="form-group form-group-sm">
+									<label for="dtCasamento">
+										Data do casamento
+									</label>
+	                                <input type="date" class="form-control" id="dtCasamento" ng-model="pessoa.conjuge.dtCasamento">
+								</div>
+							</div>
+	
+							<div class="col-md-3">
+								<div class="form-group form-group-sm">					 
+									<label for="religiao">
+										Religião do cônjuge
+									</label>
+	                                <input type="text" class="form-control" id="religiao" ng-model="pessoa.conjuge.religiao">
+								</div>
+							</div>							
+							
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-6">
+							<button class="btn btn-md btn-primary" ng-click="salvaPessoa()">salvar</button>
+						</div>
+					</div>
+					
+					<!-- // DADOS PESSOAIS -->

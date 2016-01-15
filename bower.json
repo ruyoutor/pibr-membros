@@ -1,0 +1,23 @@
+{
+  "name": "pibr-membros",
+  "version": "0.0.1",
+  "authors": [
+    "ruyoutor <ruyoutor11@gmail.com>"
+  ],
+  "description": "Aplicação de cadastro de membros da Primeira Igreja Batista do Rocha",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.4.8",
+    "bootstrap": "3.3",
+    "angular-route": "~1.4.8",
+    "angular-resource": "~1.4.8"
+  }
+}

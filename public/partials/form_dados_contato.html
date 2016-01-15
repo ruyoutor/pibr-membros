@@ -1,0 +1,66 @@
+		<!-- CONTATOS -->
+		<div class="row">
+
+            <div class="col-md-12">
+                            
+              <fieldset id="" class="stepy-step" title="Step 2">
+                <legend>Telefones</legend>
+                            
+                <div>
+
+                  <table class="table table-bordered table-hover table-striped table-condensed" ng-show="telefones.length > 0">
+                    <tr style="font-weight: normal">
+                      <td style="width:15%; text-align: center">DDD</td>
+                      <td style="width:35%; text-align: center">Numero</td>
+                      <td style="width:35%; text-align: center">Tipo</td>
+                      <td style="width:15%; text-align: center"> - </td>
+                    </tr>
+                    <tr ng-repeat="tel in telefones">
+                      <td style="text-align: center">
+                        <!-- editable username (text with validation) -->
+                        <span editable-number="tel.ddd" e-name="ddd" e-required e-form="tableContatos" onbeforesave="" e-required>
+                          {{ tel.ddd || '21' }}
+                        </span>
+                      </td>
+                      <td style="text-align: center">
+                        <span editable-number="tel.numero" e-name="numero" e-form="tableContatos" e-required>
+                            {{ tel.numero}}
+                        </span>
+                      </td>
+                      <td style="text-align: center">
+                        <span editable-select="tel.tipo" e-ng-options="tipo.id as tipo.descricao for tipo in tipos" e-form="tableContatos" e-required>
+                            {{ exibeTipo($index) }}
+                        </span>
+                      </td>                      
+
+                      <td style="white-space: nowrap">
+                        <!-- form -->
+                        <form editable-form name="tableContatos" onbeforesave="salvaContato($data, tel.id)" ng-show="tableContatos.$visible" class="form-buttons form-inline" shown="inserted == tel">
+                          <button type="submit" ng-disabled="tableContatos.$waiting" class="btn btn-primary">
+                            <i class="glyphicon glyphicon-save"></i>
+                          </button>
+                          <button type="button" ng-disabled="tableContatos.$waiting" ng-click="tableContatos.$cancel()" class="btn btn-default">
+                            <i class="glyphicon glyphicon-remove"></i>
+                          </button>
+                        </form>
+                        <div class="buttons" ng-show="!tableContatos.$visible">
+                          <button class="btn btn-primary" ng-click="tableContatos.$show()">
+                            <i class="glyphicon glyphicon-edit"></i>
+                          </button>
+                          <button class="btn btn-danger" ng-click="removeContato($index)">
+                            <i class="glyphicon glyphicon-floppy-remove"></i>
+                          </button>
+                        </div>  
+                      </td>                        
+                    </tr>
+                    
+                  </table>
+                  <button class="btn btn-default" ng-click="novoContato()">
+                    <i class="glyphicon glyphicon-plus"></i> Novo
+                  </button>
+                </div>
+              </fieldset>                                
+            </div>
+		</div>
+		<!-- // CONTATOS -->
+					    
